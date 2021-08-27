@@ -1,0 +1,88 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://storage.googleapis.com/r8-releases/raw' }
+        //maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+        //maven { url 'https://kotlin.bintray.com/kotlinx' }
+        maven { url 'https://developer.huawei.com/repo/' }
+        maven { url 'https://artifact.bytedance.com/repository/byteX/' }
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'com.android.tools.build.jetifier:jetifier-processor:1.0.0-beta10'
+        classpath 'com.google.guava:guava:30.1.1-jre'
+        classpath 'com.google.protobuf:protobuf-java-util:3.17.3'
+        classpath 'com.squareup:javapoet:1.13.0'
+        classpath 'org.ow2.asm:asm-commons:9.2'
+        classpath 'org.ow2.asm:asm-util:9.2'
+        classpath 'com.google.crypto.tink:tink:1.6.1'
+        //classpath 'com.squareup:kotlinpoet:1.8.0'
+        //classpath 'com.android.tools:r8:2.2.71'
+        classpath 'com.android.tools.build:gradle:7.0.1'
+        classpath 'gradle.plugin.org.gradle.android:android-cache-fix-gradle-plugin:2.4.2' //编译缓存修复
+        // Errorprone
+        //classpath 'net.ltgt.gradle:gradle-errorprone-plugin:2.0.2'
+        //classpath 'net.ltgt.gradle:gradle-nullaway-plugin:1.1.0' //NullAway
+        // Kotlin
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30'
+        classpath 'com.google.devtools.ksp:symbol-processing-gradle-plugin:1.5.30-1.0.0-beta08' //KSP
+        classpath 'app.cash.exhaustive:exhaustive-gradle:0.2.0'
+        classpath 'org.jetbrains.kotlinx:atomicfu-gradle-plugin:0.16.3' //原子化
+        // ByteX
+        classpath 'com.bytedance.android.byteX:base-plugin:0.3.0'
+        classpath 'com.bytedance.android.byteX:shrink-r-plugin:0.3.0' //资源压缩
+        classpath 'com.bytedance.android.byteX:closeable-check-plugin:0.3.0'  //未关闭流检测
+        classpath 'com.bytedance.android.byteX:const-inline-plugin:0.3.0' //常量内联
+        classpath 'com.bytedance.android.byteX:field-assign-opt-plugin:0.3.0' //传值优化
+        classpath 'com.bytedance.android.byteX:getter-setter-inline-plugin:0.3.0' //初始化内联
+        classpath 'com.bytedance.android.byteX:refer-check-plugin:0.3.0' //引用检测
+        // DiDi Booster
+        classpath 'org.jetbrains.kotlin:kotlin-reflect:1.5.30'
+        //classpath 'com.google.auto.service:auto-service:1.0'
+        classpath 'com.didiglobal.booster:booster-gradle-plugin:4.0.0'
+        //classpath 'com.didiglobal.booster:booster-task-analyser:4.0.0'
+        classpath 'com.didiglobal.booster:booster-transform-thread:4.0.0' //多线程优化
+        classpath 'com.didiglobal.booster:booster-transform-webview:4.0.0' //WebView预加载
+        classpath 'com.didiglobal.booster:booster-transform-finalizer-watchdog-daemon:4.0.0' //回收超时监控
+        classpath 'com.didiglobal.booster:booster-transform-res-check:4.0.0' //修复覆盖未找到资源
+        classpath 'com.didiglobal.booster:booster-transform-toast:4.0.0' //修复Toast
+        classpath 'com.didiglobal.booster:booster-transform-activity-thread:4.0.0' //系统崩溃兜底
+        //classpath 'com.didiglobal.booster:booster-transform-r-inline:4.0.0' //内联资源
+        //classpath 'com.didiglobal.booster:booster-task-compression-pngquant:4.0.0' //png压缩
+        classpath 'io.johnsonlee.booster:booster-pngquant-provider:2.3.0' //pngquant
+        //classpath 'com.didiglobal.booster:booster-transform-br-inline:4.0.0' // Binding内联
+        classpath 'com.didiglobal.booster:booster-transform-media-player:4.0.0' //修复MediaPlayer
+        //classpath 'com.didiglobal.booster:booster-task-compression-processed-res:4.0.0' //文件压缩
+        classpath 'com.didiglobal.booster:booster-task-list-shared-library:4.0.0' //动态库检查
+        classpath 'com.didiglobal.booster:booster-task-list-permission:4.0.0' //依赖权限检查
+        // 其他
+        classpath 'com.tencent.bugly:symtabfileuploader:2.2.1' //Bugly 符号表上传
+        classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.21' //资源压缩
+        //classpath 'com.google.dagger:hilt-android-gradle-plugin:2.37' //依赖注入
+        classpath 'io.github.chao2zhang.livedatadebugger:livedatadebugger:0.1.0' // LiveData 调试
+        classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.4.0-alpha07' // SafeArgs
+        //classpath 'com.jakewharton.wormhole:wormhole-gradle:0.3.1' // Desugar
+        classpath 'com.github.plnice:canidropjetifier:0.5' //移除Jetifier
+        classpath 'org.sonatype.gradle.plugins:scan-gradle-plugin:2.0.12' //依赖扫描
+        classpath 'com.autonomousapps:dependency-analysis-gradle-plugin:0.76.0' //依赖分析
+        classpath 'dev.zacsweers.redacted:redacted-compiler-plugin-gradle:0.8.0' //日志加密
+        classpath 'de.jjohannes.gradle:missing-metadata-guava:0.4' // Guava 冲突解决
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.39.0' //依赖更新
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:3.0.0-RC01' //方法计数
+        //classpath 'io.realm:realm-gradle-plugin:10.1.2' //数据库
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,179 @@
+plugins {
+    id 'com.android.library'
+    id 'org.gradle.android.cache-fix'
+    id 'kotlin-android'
+    //id 'com.google.devtools.ksp'
+    id 'kotlin-parcelize'
+    id 'kotlinx-atomicfu'
+    //id 'androidx.navigation.safeargs.kotlin'
+    id 'com.getkeepsafe.dexcount'
+    //id 'app.cash.exhaustive'
+    //id 'com.didiglobal.booster'
+    id 'project-report'
+    id 'de.jjohannes.missing-metadata-guava'
+    id 'org.sonatype.gradle.plugins.scan'
+    //id 'net.ltgt.errorprone'
+    //id 'net.ltgt.nullaway'
+    //id 'AndResGuard'
+    //id 'com.github.plnice.canidropjetifier'
+    //id 'com.jakewharton.wormhole'
+    id 'com.github.ben-manes.versions'
+    //id 'dev.zacsweers.redacted'
+    //id 'io.github.chao2zhang.livedatadebugger'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        minSdk 16
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        checkDependencies true
+        abortOnError false
+        checkAllWarnings true
+        showAll true
+        explainIssues true
+    }
+
+    compileOptions {
+        incremental true
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+        languageVersion = "1.5"
+        apiVersion = "1.5"
+        useIR = true
+        javaParameters = false
+    }
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1'
+    //implementation 'org.jetbrains.kotlinx:kotlinx-collections-immutable-jvm:0.3.4'
+    implementation 'org.jetbrains.kotlinx:atomicfu:0.16.3'
+    //implementation 'io.reactivex.rxjava3:rxkotlin:3.0.1'
+    implementation 'com.louiscad.splitties:splitties-appctx:3.0.0'
+    //implementation 'com.louiscad.splitties:splitties-coroutines:3.0.0'
+    //implementation 'com.louiscad.splitties:splitties-fun-pack-android-base:3.0.0'
+    //implementation 'com.louiscad.splitties:splitties-fun-pack-android-material-components:3.0.0'
+    //Jetpack组件
+    implementation 'androidx.appcompat:appcompat:1.4.0-alpha03'
+    implementation 'androidx.core:core-ktx:1.7.0-alpha01'
+    //implementation 'androidx.core:core-animation:1.0.0-alpha02'
+    implementation 'androidx.biometric:biometric-ktx:1.2.0-alpha03'
+    implementation 'androidx.window:window:1.0.0-beta01'
+    implementation 'androidx.activity:activity-ktx:1.3.1'
+    implementation 'androidx.fragment:fragment-ktx:1.4.0-alpha07'
+    //implementation 'androidx.core:core-splashscreen:1.0.0-alpha01'
+    implementation 'androidx.collection:collection-ktx:1.2.0-alpha01'
+    //implementation 'androidx.concurrent:concurrent-futures-ktx:1.1.0'
+    //implementation 'androidx.exifinterface:exifinterface:1.3.2'
+    implementation 'androidx.dynamicanimation:dynamicanimation-ktx:1.0.0-alpha03'
+    //implementation 'androidx.slidingpanelayout:slidingpanelayout:1.2.0-alpha03'
+    //implementation 'androidx.print:print:1.1.0-beta01'
+    implementation 'androidx.loader:loader:1.1.0'
+    implementation 'androidx.transition:transition-ktx:1.4.1'
+    //implementation 'androidx.media:media:1.4.0-beta01'
+    //implementation 'androidx.media2:media2-session:1.2.0-alpha01'
+    //implementation 'androidx.media2:media2-widget:1.2.0-alpha01'
+    //implementation 'androidx.media2:media2-player:1.2.0-alpha01'
+    implementation 'org.conscrypt:conscrypt-android:2.5.2'
+    //implementation 'androidx.security:security-crypto:1.0.0'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0-beta01'
+    implementation 'com.google.android.material:material:1.5.0-alpha02'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.vectordrawable:vectordrawable:1.2.0-alpha02'
+    //implementation 'androidx.vectordrawable:vectordrawable-seekable:1.0.0-alpha02'
+    //implementation 'androidx.work:work-runtime-ktx:2.7.0-alpha03'
+    //implementation 'androidx.emoji:emoji-appcompat:1.2.0-alpha03'
+    //implementation 'androidx.emoji:emoji-bundled:1.2.0-alpha03'
+    implementation 'androidx.navigation:navigation-fragment:2.4.0-alpha07'
+    implementation 'androidx.navigation:navigation-ui:2.4.0-alpha07'
+    //implementation 'androidx.navigation:navigation-dynamic-features-fragment:2.4.0-alpha06'
+    //implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //implementation 'androidx.legacy:legacy-support-v13:1.0.0'
+    //implementation 'androidx.savedstate:savedstate-ktx:1.1.0'
+    //implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.1.0-alpha01'
+    //implementation 'androidx.versionedparcelable:versionedparcelable:1.1.1'
+    //implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01'
+    implementation 'androidx.webkit:webkit:1.4.0'
+    implementation 'androidx.annotation:annotation:1.3.0-alpha01'
+    implementation 'androidx.annotation:annotation-experimental:1.2.0-alpha01'
+    //RecyclerView相关
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.recyclerview:recyclerview-selection:1.2.0-alpha01'
+    implementation 'com.github.carousell:ConcatAdapterExtension:1.2.1'
+    //implementation 'androidx.paging:paging-runtime-ktx:3.1.0-alpha01'
+    //implementation 'androidx.paging:paging-guava:3.1.0-alpha01'
+    //implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
+    //其他界面相关
+    implementation 'dev.chrisbanes.insetter:insetter:0.6.0' //WindowInsets
+    //生命周期管理
+    implementation 'androidx.startup:startup-runtime:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-process:2.4.0-alpha03'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha03'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0-alpha03'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-alpha03'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.4.0-alpha03'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.4.0-alpha03'
+    //implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.4.0-alpha03'
+    //implementation 'com.androidisland.arch:vita:0.1.0'
+    //okhttp，3.12+需要API21+
+    implementation 'com.squareup.okio:okio:3.0.0-alpha.9'
+    debugImplementation 'com.squareup.okhttp3:logging-interceptor:3.12.13'
+    releaseCompileOnly 'com.squareup.okhttp3:logging-interceptor:3.12.13'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.13'
+    implementation 'com.squareup.okhttp3:okhttp-dnsoverhttps:3.12.13'
+    //implementation 'com.squareup.okhttp3:okhttp-tls:3.12.13'
+    implementation 'com.github.franmontiel:PersistentCookieJar:1.0.1'
+    //implementation 'com.squareup.okhttp3:okhttp-brotli:3.12.13'
+    //Retrofit，2.6.4+需要API21+
+    implementation 'com.squareup.retrofit2:converter-moshi:2.6.4'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.4'
+    //implementation 'com.squareup.retrofit2:converter-guava:2.6.4'
+    //implementation 'com.squareup.retrofit2:adapter-guava:2.6.4'
+    //stream，时间类兼容
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+    implementation 'dev.zacsweers.ticktock:ticktock-android-tzdb-base:0.2.1'
+    implementation 'dev.zacsweers.ticktock:ticktock-runtime:1.1.0-2020f'
+    //FlowBinding
+    implementation 'io.github.reactivecircus.flowbinding:flowbinding-android:1.2.0'
+    //implementation 'io.github.reactivecircus.flowbinding:flowbinding-activity:1.2.0'
+    //implementation 'io.github.reactivecircus.flowbinding:flowbinding-appcompat:1.2.0'
+    //implementation 'io.github.reactivecircus.flowbinding:flowbinding-core:1.2.0'
+    //implementation 'io.github.reactivecircus.flowbinding:flowbinding-lifecycle:1.2.0'
+    //implementation 'io.github.reactivecircus.flowbinding:flowbinding-navigation:1.2.0'
+    //implementation 'io.github.reactivecircus.flowbinding:flowbinding-recyclerview:1.2.0'
+    //implementation 'io.github.reactivecircus.flowbinding:flowbinding-swiperefreshlayout:1.2.0'
+    //implementation 'io.github.reactivecircus.flowbinding:flowbinding-viewpager:1.2.0'
+    //implementation 'io.github.reactivecircus.flowbinding:flowbinding-viewpager2:1.2.0'
+    //implementation 'io.github.reactivecircus.flowbinding:flowbinding-material:1.2.0'
+    //货币(JSR 354)
+    implementation 'com.github.RavioliWonton:joda-money-android:1.0.1-alpha03'
+    //implementation 'org.javamoney:moneta:1.4.2' //API21+
+    //implementation 'javax.annotation:javax.annotation-api:1.3.2' //API21+
+    //implementation 'org.joda:joda-money:1.0.1'
+    //Log
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+    implementation 'com.elvishew:xlog:1.11.0'
+    //implementation 'org.gradle:gradle-tooling-api:6.8.1'
+    //runtimeOnly 'org.slf4j:slf4j-simple:1.7.30'
+    implementation 'org.jetbrains:annotations:22.0.0'
+}
